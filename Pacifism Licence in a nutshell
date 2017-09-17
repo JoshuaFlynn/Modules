@@ -1,0 +1,107 @@
+Pacifism licence in a nutshell (this doesn't override the licence, but offers clarification on it):
+
+1) Program is public domain, subject to agreement
+2) Patents/ideas are not public domain
+3) You can re-use, distribute, modify and sell the Program, subject to agreement
+4) There's no liabilities or warranties
+5) You're not required to release the source code of any derivative works, but if you do,
+   you must publish it with the aforementioned copyright licence
+6) The program itself, in part or in whole, must not be used to cause:
+   a) intentionally and destructive
+   b) death or physical harm
+7) Anyone can sue on the behalf of this licence to enforce it's terms.
+
+For those of you wondering 'isn't all death/harm destructive?', we note exemptions:
+
+1) Medical procedures, whose goal in certain operations causes physical harm but is intended to be
+   largely non-destructive, but is an intentional harm (we exclude euthanasia and abortion from this
+   exemption because both cause an intentional death akin to murder, which pacifism shuns).
+   
+2) Switching off life support machines and following do not resuscitate orders. Even though the act
+   is intentional, and results in death, in the first case, it assumed the person is already technically
+   dead, in the second, because it's a passive action: trying to resuscitate a person causes additional
+   damage to their body, and people will ask they not be resuscitated. Pacifism does not use brute force
+   and thus forcibly resuscitating them against their wishes violates pacifism. The cause of death is
+   arguably also naturally occurring (IE natural causes is the thing killing them). To demand people
+   always attempt to save lives is unreasonable, and thus the burden is simply not to purposefully take
+   an active course of action that results in death.
+   
+3) Unintentional deaths happen, and this licence is against active killing/harm, not people who make grave
+   mistakes, which humans are bound to do. In the event intention is unknown, the licence presumes 
+   innocence over guilt, especially in cases of medical procedures.
+   
+4) The specifier here is purposefully designed not to entirely exclude the military. At first glance this
+   might seem like a contradiction between pacifism and the military, however there are some roles the
+   military conducts (such as delivering food aid to starving regions) which are in-line with pacifism.
+   This also prevents the total exclusion of law enforcement activities (arguably military in some cases)
+   by allowing passive systems (EG detective work, research, booking, processes, etc) to use it. Think of it
+   as a means to encourage more upstanding (IE less violent) behaviour in such communities.
+   
+5) Direct or indirect is purposefully omitted in the licence, because 'cause' is a moral grey area. We rely
+   on a normally uninterruptable 'chain of causation'. For example, consider a police officer who books in a 
+   criminal using the Program, who ends up convicted, and gets the death penalty. If the licence said 'indirect', 
+   people would presume it had indirectly caused this situation, and thus violates the terms - which is against this
+   licence's intentions (the police officer isn't responsible for the judge's punishment decisions nor the findings
+   of the trial - the chain is interruptable). However, if someone had used the software to aid in the locating
+   of a fetus for the purposes of abortion, we would consider this a violation of the licence terms (the chain -
+   locating the fetus for the purposes of abortion - is uninterruptable in the causation of death).
+   
+   So in this context, 'cause of harm' and 'cause of death' refer to an uninterruptable 'chain of causation' 
+   that ultimately leads to an intentional death or physical harm, even if the software isn't used in the
+   final act that leads to harm or death.
+   
+6) Physical harm is specified instead of just harm, largely because we live in an era where even the slightest
+   verbal or emotional disagreement or 'infringement' is being redefined as a 'harm'. For pacifism to function,
+   open, honest debate (even offensive) has to be allowed to exist, as part and parcel of negotiations and
+   diplomacy. People who cannot express themselves will bottle it up, and then unexpectedly lash out, and in this
+   era of hypersensitivities, we do not want to open up anyone to a possible lawsuit simply because someone
+   got 'offended' or 'emotionally harmed'.
+   
+   Whilst we recognise that agencies, organisations, corporations etc can induce campaigns of egarious emotional,
+   psychological, verbal and even propaganda abuse, this isn't intended to be a 'perfect licence', and based on 
+   litigation within the US, it is our opinion that it's far more likely that 'emotional harm' will be used in
+   frivilous lawsuits and ergo it is explicitly denied (by the phrasing of 'physical') in the pacifism licence.
+   
+   Physical harm is therefore defined, because it is an objective, measurable standard that can be easily documented,
+   shown for all to see. This is primarily what pacifism aims to oppose anyway.
+   
+ Why can 'anyone sue on behalf of this licence'?
+ 
+ 1) In the era of patent trolls, they can serve a useful purpose if directed correctly. In this case, the 
+    enforcement of the above terms 'by anyone' serves as an overall general looming litigation threat, so
+    rather than them assuming 'that pacifist ain't gunna do nothing', it's instead opened to everyone to
+    utilise (encouraging non-pacifist organisation who exploit pacifists to adopt pacifism ideals to avoid
+    legal non-pacifists. Beautiful irony, no?).
+    
+    This also means that, any individuals physically harmed by the software being abused against it's intentions
+    have a means of recourse. This allows both directly harmed individuals a means of recourse, as well as legal
+    eagle pacifism style (or at least anti-war) organisations to help counter it's abuse. I build this software
+    to save lives, and I have to at least give it some teeth (even if only legally speaking) if it's
+    to live up to that expectation.
+    
+ 2) If I end up 'popping my clogs' (something any non-pacifist organisation is inclined to do), I don't want the
+    pacifism licence becoming unenforceable. It also means anyone can adopt the licence, knowing that anyone else
+    can end up enforcing it. 
+    
+ 3) It means anyone working on a project in secret that has stolen this code for destructive harm will have read
+    the licence and therefore would be able to sue the company they work for, for violation of the terms.
+    
+ If the derivative source code is not required to be available for publishing, why must the licence be included 
+ with if it's ever published?
+ 
+ 1) We don't agree with forcing organisations to publish code they've worked on for years with the possibility
+    that rivals might end up stealing it, so we've removed this as a mandate. However, for people to know that
+    the code falls under the pacifism public licence, they must have some way of finding out. So we include the
+    provision that any derivative works that get published (IE the source code) include the pacifism licence.
+    
+ 2) This prevents 'stolen code' communities who try to hide the fact they have a pacifism licenced piece of software,
+    from publicly sharing it anywhere (even with another company) without disclosing the fact they have used it.
+    This forces 'stolen code' communities to have to keep it constantly secret (and thus receive no help) or publish
+    the full legal notice, which of course includes the ability to be sued by anyone for violation of the terms and 
+    conditions.
+    
+ If the Program is basically public domain, why aren't the patents?
+ 
+  1) The patents/ideas aren't licenced under this because it would be extremely difficult to police. Evidence of
+     software malappropriation should suffice. Trying to evidence stolen ideas is a horrible mess, so we don't
+     offer them up to the public, period.

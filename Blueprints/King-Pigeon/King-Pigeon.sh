@@ -142,6 +142,9 @@ apt-get install -y wicd
 #Add the King Pigeon Background
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
 
+#Add the King Pigeon icon
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
+
 #Set up the login screen's details
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" 
 
@@ -151,8 +154,20 @@ lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/Kin
 #Installed UEFI grub support
 apt-get install -y grub-efi-amd64
 
+#Install offline apt support
+apt-get install apt-offline
+
+#Install an up-to-date openjdk-8
+
+#apt-get download -y openjdk-8-jre-headless
+
+#apt-get install openjdk-8-jre
+
 #Update the .img file pre-emptively for the snapshot
 update-initramfs -u
+
+#Clean out the archive space of debian packages to free up disk space
+apt-get clean
 
 #Reboot so the changes take effect
 reboot

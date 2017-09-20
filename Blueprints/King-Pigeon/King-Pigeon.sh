@@ -112,8 +112,17 @@ apt-get purge -y exfalso quodlibet
 #Get rid of XFCE entirely
 apt-get purge -y xfconf xfce4-utils xfwm4 xfce4-session thunar xfdesktop4 exo-utils xfce4-panel xfce4-terminal xfce4-taskmanager
 
+#Remove everything in the background images base
+rm /usr/share/images/desktop-base/*
+
 #Bring in LXDE
 apt-get install -y lxde-core
+
+#Pull in the terminal specifically for LXDE
+apt-get install -y lxterminal
+
+#Install a basic image viewer
+apt-get install -y gpicview
 
 #Get rid of the default display manager
 apt-get purge -y slim
@@ -130,6 +139,16 @@ rm -rf "/usr/share/xfce4"
 #Reinstall wicd, because for some reason this gets violently removed by one of the earlier libraries, but we actually need it
 apt-get install -y wicd
 
+#Add the King Pigeon Background
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
+
+#Set up the login screen's details
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" 
+
+#Change the desktop background
+lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
+
+#Installed UEFI grub support
 apt-get install -y grub-efi-amd64
 
 #Update the .img file pre-emptively for the snapshot

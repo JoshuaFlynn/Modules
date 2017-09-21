@@ -146,7 +146,10 @@ cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.p
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
 
 #Set up the login screen's details
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" 
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
+
+#Update the openbox rc file
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "~/.config/openbox/"
 
 #Change the desktop background
 lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
@@ -157,14 +160,14 @@ apt-get install -y grub-efi-amd64
 #Install offline apt support
 apt-get install apt-offline
 
-#Install an up-to-date openjdk-8
-
-#apt-get download -y openjdk-8-jre-headless
-
-#apt-get install openjdk-8-jre
-
 #Update the .img file pre-emptively for the snapshot
 update-initramfs -u
+
+#Clear out useless xfce4 folder
+rm -rf /etc/xdg/xfce4
+
+#Clear out useless Thundar folder
+rm -rf /etc/xdg/Thundar
 
 #Clean out the archive space of debian packages to free up disk space
 apt-get clean

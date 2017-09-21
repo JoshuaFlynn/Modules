@@ -31,29 +31,29 @@ fi
 #_user=SUDO_USER
 
 #Make our deployment directory
-#mkdir "/home/$_user/Modules"
+#mkdir "~/Modules"
 #if [ $? -ne 0 ] ; then
-#	echo "Failed to make a /home/$_user/Modules/ directory. Quitting."
+#	echo "Failed to make a ~/Modules/ directory. Quitting."
 #	exit 1;
 #fi
 
 #tell git to change it's directory (we want it to drop the module files in the right place for copying purposes)
-git -C "/home/$_user/"
+git -C "~/"
 
 #Download the modules configuration system
 git clone https://github.com/JoshuaFlynn/Modules.git
 
 #Delete the garbage files off the desktop
-rm "/home/$_user/Desktop/_RELEASE_NOTES"
-rm "/home/$_user/Desktop/SMALLER FONTS.desktop"
-rm "/home/$_user/Desktop/LARGER FONTS.desktop"
+rm "~/Desktop/_RELEASE_NOTES"
+rm "~/Desktop/SMALLER FONTS.desktop"
+rm "~/Desktop/LARGER FONTS.desktop"
 
 #Navigate to the new directory
-cd "/home/$_user/Modules"
+cd "~/Modules"
 
 #Transfer a copy of the sources.list file (which should be correctly configured)
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
 
 #Now we've updated the sources.list file to include everything, update our own cache
 apt-get update
@@ -140,16 +140,18 @@ rm -rf "/usr/share/xfce4"
 apt-get install -y wicd
 
 #Add the King Pigeon Background
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
 
 #Add the King Pigeon icon
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
 
 #Set up the login screen's details
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
 
 #Update the openbox rc file
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "~/.config/openbox/"
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "~/.config/openbox/"
+
+cp "~/Modules/Blueprints/King-Pigeon/Replacements/panel" "~/.config/lxpanel/LXDE/panels/"
 
 #Change the desktop background
 lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"

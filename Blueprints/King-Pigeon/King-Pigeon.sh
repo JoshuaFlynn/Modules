@@ -28,7 +28,7 @@ if [ "" == "$PKG_OK" ]; then
  	sudo apt-get --force-yes --yes install git
 fi
 
-_user=$SUDO_USER
+_user=$(logname)
 
 #Make our deployment directory
 #mkdir "/home/$_user/Modules"
@@ -38,15 +38,16 @@ _user=$SUDO_USER
 #fi
 
 #tell git to change it's directory (we want it to drop the module files in the right place for copying purposes)
-git -C "/home/$_user/"
 
 #Download the modules configuration system
-git clone https://github.com/JoshuaFlynn/Modules.git
+cd "/home/$_user"; git clone https://github.com/JoshuaFlynn/Modules.git
+
+echo ls
 
 #Delete the garbage files off the desktop
 rm "/home/$_user/Desktop/_RELEASE_NOTES"
-rm "/home/$_user/Desktop/SMALLER FONTS.desktop"
-rm "/home/$_user/Desktop/LARGER FONTS.desktop"
+rm "/home/$_user/Desktop/SMALLER_FONTS.desktop"
+rm "/home/$_user/Desktop/LARGER_FONTS.desktop"
 
 #Navigate to the new directory
 cd "/home/$_user/Modules"
@@ -154,13 +155,13 @@ cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
 
 #Change the desktop background
-lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
+#lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
 
 #Installed UEFI grub support
 apt-get install -y grub-efi-amd64
 
 #Install offline apt support
-apt-get install apt-offline
+apt-get install -y apt-offline
 
 #Update the .img file pre-emptively for the snapshot
 update-initramfs -u

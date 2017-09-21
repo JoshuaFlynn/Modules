@@ -27,7 +27,7 @@ Plugin {
 Plugin {
   type=menu
   Config {
-    image=/usr/share/lxde/images/lxde-icon.png
+    image=/usr/share/lxde/images/King-Pigeon-Logo-Mini-Simple-2b-Menu.png
     system {
     }
     separator {

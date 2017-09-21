@@ -152,6 +152,10 @@ cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter
 #Update the openbox rc file
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home/$_user/.config/openbox/"
 
+#Copy over the menu logo
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini-Simple-2b-Menu" "/usr/share/lxde/images/"
+
+#Copy over the panel configuration to make things look nice
 cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
 
 #Change the desktop background

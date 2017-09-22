@@ -53,8 +53,8 @@ rm "/home/$_user/Desktop/LARGER_FONTS.desktop"
 cd "/home/$_user/Modules"
 
 #Transfer a copy of the sources.list file (which should be correctly configured)
-cp /etc/apt/sources.list /etc/apt/sources.list.bak
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
+cp --parents /etc/apt/sources.list /etc/apt/sources.list.bak
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
 
 #Now we've updated the sources.list file to include everything, update our own cache
 apt-get update
@@ -63,7 +63,14 @@ apt-get update
 apt-get purge -y gimp
 
 #Get rid of bloat office packages
-apt-get purge -y libreoffice libreoffice-base libreoffice-math libreoffice-calc libreoffice-writer libreoffice-bin libreoffice-draw libreoffice-impress
+apt-get purge -y libreoffice
+apt-get purge -y  libreoffice-base
+apt-get purge -y  libreoffice-math
+apt-get purge -y  libreoffice-calc
+apt-get purge -y  libreoffice-writer
+apt-get purge -y  libreoffice-bin
+apt-get purge -y  libreoffice-draw
+apt-get purge -y  libreoffice-impress
 
 #Get rid of the web browser
 apt-get purge -y firefox-esr iceweasel w3m
@@ -141,25 +148,27 @@ rm -rf "/usr/share/xfce4"
 apt-get install -y wicd
 
 #Add the King Pigeon Background
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
 
 #Add the King Pigeon icon
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
 
 #Set up the login screen's details
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
 
 #Update the openbox rc file
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home/$_user/.config/openbox/"
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home/$_user/.config/openbox/"
 
 #Copy over the menu logo
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini-Simple-2b-Menu" "/usr/share/lxde/images/"
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini-Simple-2b-Menu" "/usr/share/lxde/images/"
 
 #Copy over the panel configuration to make things look nice
-cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
 
 #Change the desktop background
 #lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
+
+cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/desktop-items-0.conf" "/home/$_user/.config/pcmanfm/LXDE"
 
 #Installed UEFI grub support
 apt-get install -y grub-efi-amd64

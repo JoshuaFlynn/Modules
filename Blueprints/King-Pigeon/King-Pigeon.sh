@@ -53,8 +53,8 @@ rm "/home/$_user/Desktop/LARGER_FONTS.desktop"
 cd "/home/$_user/Modules"
 
 #Transfer a copy of the sources.list file (which should be correctly configured)
-cp --parents /etc/apt/sources.list /etc/apt/sources.list.bak
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
+cp  /etc/apt/sources.list /etc/apt/sources.list.bak
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
 
 #Now we've updated the sources.list file to include everything, update our own cache
 apt-get update
@@ -148,27 +148,36 @@ rm -rf "/usr/share/xfce4"
 apt-get install -y wicd
 
 #Add the King Pigeon Background
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
+mkdir -p "/usr/share/images/desktop-base/"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Space.png" /usr/share/images/desktop-base/
 
 #Add the King Pigeon icon
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
+mkdir -p "/usr/share/pixmaps"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini.png" /usr/share/pixmaps
 
 #Set up the login screen's details
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
+mkdir -p /etc/lightdm
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lightdm-gtk-greeter.conf" /etc/lightdm
 
 #Update the openbox rc file
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home/$_user/.config/openbox/"
+mkdir -p "/home/$_user/.config/openbox/"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/lxde-rc.xml" "/home/$_user/.config/openbox/"
 
 #Copy over the menu logo
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini-Simple-2b-Menu" "/usr/share/lxde/images/"
+mkdir -p "/usr/share/lxde/images/"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/King-Pigeon-Logo-Mini-Simple-2b-Menu.png" "/usr/share/lxde/images/"
 
 #Copy over the panel configuration to make things look nice
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
+mkdir -p "/home/$_user/.config/lxpanel/LXDE/panels/"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/panel" "/home/$_user/.config/lxpanel/LXDE/panels/"
 
-#Change the desktop background
-#lxterminal --command "pcmanfm --set-wallpaper=/usr/share/images/desktop-base/King-Pigeon-Space.png"
+#Copy over the logout banner
+mkdir -p "/usr/share/lxde/images/"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/logout-banner.png" "/usr/share/lxde/images/"
 
-cp --parents "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/desktop-items-0.conf" "/home/$_user/.config/pcmanfm/LXDE"
+#Copy over the background desktop setup
+mkdir -p "/home/$_user/.config/pcmanfm/LXDE"
+cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/desktop-items-0.conf" "/home/$_user/.config/pcmanfm/LXDE"
 
 #Installed UEFI grub support
 apt-get install -y grub-efi-amd64
@@ -176,8 +185,15 @@ apt-get install -y grub-efi-amd64
 #Install offline apt support
 apt-get install -y apt-offline
 
-#Update the .img file pre-emptively for the snapshot
-update-initramfs -u
+#Now to rip out the systemd surrogate
+apt-get purge -y libsystemd0
+
+#gnome-sushi
+#gvfs
+#gvfs-backends
+#gvfs-daemons
+#gvfs-fuse
+#nautilus
 
 #Clear out useless xfce4 folder
 rm -rf /etc/xdg/xfce4
@@ -185,8 +201,20 @@ rm -rf /etc/xdg/xfce4
 #Clear out useless Thundar folder
 rm -rf /etc/xdg/Thundar
 
+mkdir -p "/etc/apt/preferences.d"
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/avoid-libsystemd0" "/etc/apt/preferences.d"
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/avoid-systemd-container" "/etc/apt/preferences.d"
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/avoid-libsystemd-dev" "/etc/apt/preferences.d"
+cp "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/avoid-systemd-coredump" "/etc/apt/preferences.d"
+
 #Clean out the archive space of debian packages to free up disk space
 apt-get clean
+
+#Clean out the removed packages fully
+apt-get autoremove -y
+
+#Update the .img file pre-emptively for the snapshot
+update-initramfs -u
 
 #Reboot so the changes take effect
 reboot

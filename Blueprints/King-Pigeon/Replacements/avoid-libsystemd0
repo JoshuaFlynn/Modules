@@ -1,0 +1,4 @@
+Package: libsystemd0
+Pin: release o=Debian
+Pin-Priority: -1
+

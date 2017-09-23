@@ -1,0 +1,4 @@
+Package: libsystemd-dev
+Pin: release o=Debian
+Pin-Priority: -1
+

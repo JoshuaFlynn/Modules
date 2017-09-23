@@ -1,0 +1,4 @@
+Package: systemd-container
+Pin: release o=Debian
+Pin-Priority: -1
+

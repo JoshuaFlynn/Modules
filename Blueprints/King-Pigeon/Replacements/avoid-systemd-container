@@ -1,0 +1,4 @@
+Package: systemd-coredump
+Pin: release o=Debian
+Pin-Priority: -1
+

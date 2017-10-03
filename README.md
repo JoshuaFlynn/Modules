@@ -35,14 +35,17 @@ Please be aware that Borg-Pigeon is an extremely dangerous conversion script sys
 Lubuntu-1404-Drone.sh [not yet ready]
 -------------------------------------
 Desktop 14.04 Lubuntu OS (bit-type agnostic)
+
 Assimilates to: Devuan Jessie
 
 Debian-Jessie-Drone.sh [not yet ready]
 --------------------------------------
 Desktop Debian Jessie OS (bit-type agnostic)
+
 Assimilates to: Devuan Jessie
 
 Debian-Jessie-to-ASCII-Drone.sh [not yet ready]
 -----------------------------------------------
 Desktop Debian Jessie OS (bit-type agnostic)
+
 Assimilates to: Devuan ASCII

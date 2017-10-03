@@ -1,0 +1,11 @@
+## package repositories
+deb http://auto.mirror.devuan.org/merged jessie main non-free contrib
+deb http://auto.mirror.devuan.org/merged jessie-updates main non-free contrib
+deb http://auto.mirror.devuan.org/merged jessie-security main non-free contrib
+deb http://auto.mirror.devuan.org/merged jessie-backports main non-free contrib
+
+## source repositories
+#deb-src http://auto.mirror.devuan.org/merged jessie main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged jessie-updates main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged jessie-security main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged jessie-backports main non-free contrib

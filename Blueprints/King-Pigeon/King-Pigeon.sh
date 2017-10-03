@@ -1,5 +1,6 @@
 #!/bin/bash
 #Version 1.0
+#Assumes the target system it's being deployed on is Devuan Jessie
 
 #Do a sudo/root level check
 uid=$(id -u)
@@ -30,19 +31,10 @@ fi
 
 _user=$(logname)
 
-#Make our deployment directory
-#mkdir "/home/$_user/Modules"
-#if [ $? -ne 0 ] ; then
-#	echo "Failed to make a /home/$_user/Modules/ directory. Quitting."
-#	exit 1;
-#fi
-
 #tell git to change it's directory (we want it to drop the module files in the right place for copying purposes)
 
 #Download the modules configuration system
 cd "/home/$_user"; git clone https://github.com/JoshuaFlynn/Modules.git
-
-echo ls
 
 #Delete the garbage files off the desktop
 rm "/home/$_user/Desktop/_RELEASE_NOTES"
@@ -53,8 +45,8 @@ rm "/home/$_user/Desktop/LARGER_FONTS.desktop"
 cd "/home/$_user/Modules"
 
 #Transfer a copy of the sources.list file (which should be correctly configured)
-cp  /etc/apt/sources.list /etc/apt/sources.list.bak
-cp  "/home/$_user/Modules/Blueprints/King-Pigeon/Replacements/sources.list" /etc/apt
+cp  /etc/apt/sources.list /etc/apt/jessie-sources.list.bak
+cp  "/home/$_user/Modules/Blueprints/HelperScripts/Replacements/jessie-sources.list" /etc/apt/sources.list
 
 #Now we've updated the sources.list file to include everything, update our own cache
 apt-get update
@@ -138,14 +130,14 @@ apt-get purge -y slim
 #Install the lightdm
 apt-get install -y lightdm
 
+#Reinstall wicd, because for some reason this gets violently removed by one of the earlier libraries, but we actually need it
+apt-get install -y wicd
+
 #Finally, get rid of everything for realsies
 apt-get autoremove -y
 
 #Purge the usr/share folder containing the XFCE4 junk we no longer need, which isn't removed when XFCE goes
 rm -rf "/usr/share/xfce4"
-
-#Reinstall wicd, because for some reason this gets violently removed by one of the earlier libraries, but we actually need it
-apt-get install -y wicd
 
 #Add the King Pigeon Background
 mkdir -p "/usr/share/images/desktop-base/"

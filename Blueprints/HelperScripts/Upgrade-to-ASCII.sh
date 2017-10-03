@@ -23,3 +23,29 @@ _user=$(logname)
 #Download the modules configuration system
 cd "/home/$_user"; git clone https://github.com/JoshuaFlynn/Modules.git
 
+#Make a backup copy of the sources list file
+cp /etc/apt/sources.list /etc/apt/jessie-sources.list.bak
+
+#Copy in our ascii file
+cp "/home/$_user/Modules/Blueprints/HelperScripts/ascii-sources.list" /etc/apt/sources.list
+
+#Update the new sources list
+apt-get update -y
+
+#Update apt (if any updates for it are pending)
+apt-get install -y apt
+
+#Upgrade the present collection
+apt-get upgrade -y
+
+#Remove old packages
+apt-get autoremove -y
+
+#Perform a distribution upgrade
+apt-get dist-upgrade -y
+
+#Remove old packages
+apt-get autoremove -y
+
+#Reboot so changes take effect
+reboot

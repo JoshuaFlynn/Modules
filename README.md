@@ -33,10 +33,16 @@ Borg-Pigeon Warning:
 Please be aware that Borg-Pigeon is an extremely dangerous conversion script system to use, and will very likely leave your OS in an unusable state because other OSes are largely incompatible with Devuan, and it's advisible you install Devuan via ISO. This upgrade path is intended to be a 'Live media free' upgrade/conversion route, or a way of trying to preserve system configurations whilst trying to escape systemd. Borg-Pigeon offers no guarantee of stability, and considers it's goal 'complete' when your previous OS can boot onto a Devuan image-kernel with access to Devuan repositories. This of course means that systemd is likely still installed. We choose the unpleasant connotation of a cyborg to confer an image of how unnatural the hybridisation is on purpose.
 
 Lubuntu-1404-Drone.sh [not yet ready]
-----------------
+-------------------------------------
 Desktop 14.04 Lubuntu OS (bit-type agnostic)
+Assimilates to: Devuan Jessie
 
 Debian-Jessie-Drone.sh [not yet ready]
----------------
+--------------------------------------
 Desktop Debian Jessie OS (bit-type agnostic)
+Assimilates to: Devuan Jessie
 
+Debian-Jessie-to-ASCII-Drone.sh [not yet ready]
+-----------------------------------------------
+Desktop Debian Jessie OS (bit-type agnostic)
+Assimilates to: Devuan ASCII

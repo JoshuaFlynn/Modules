@@ -27,7 +27,7 @@ cd "/home/$_user"; git clone https://github.com/JoshuaFlynn/Modules.git
 cp /etc/apt/sources.list /etc/apt/jessie-sources.list.bak
 
 #Copy in our ascii file
-cp "/home/$_user/Modules/Blueprints/HelperScripts/ascii-sources.list" /etc/apt/sources.list
+cp "/home/$_user/Modules/Blueprints/HelperScripts/Replacements/ascii-sources.list" /etc/apt/sources.list
 
 #Update the new sources list
 apt-get update -y

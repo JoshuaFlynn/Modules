@@ -15,27 +15,45 @@ PKG_OK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed
 
 #It's not there, install and enable it
 if [ "" == "$PKG_OK" ]; then
- 	sudo apt-get --force-yes --yes install git
+ 	apt-get --force-yes --yes install git
 fi
+
+#vdev's make requires gcc
+apt-get install -y gcc
 
 _user=$(logname)
 
 #Download vdev (woo hoo)
-git clone https//github.com/jcnelson/vdev /Modules/vdev
+git clone https://github.com/jcnelson/vdev "/home/$_user/Modules/vdev"
 
-#Move into the vdev directory so we can make it
-cd /Modules/vdev
+#Download the pstat library
+git clone https://github.com/jcnelson/libpstat "/home/$_user/Modules/libpstat"
 
-#Check make is installed
+#Check make is installed so we can build the above packages
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' make|grep "install ok installed")
 
 #It's not there, install and enable it
 if [ "" == "$PKG_OK" ]; then
- 	sudo apt-get --force-yes --yes install make
+ 	apt-get --force-yes --yes install make
 fi
+
+#Move into the libpstat library so we can make it
+cd /Modules/libpstat
+
+#Make it
+make OS="LINUX"
+
+#Install it
+make install PREFIX=/ INCLUDE_PREFIX=/usr
+
+#Move into the vdev directory so we can make it
+cd "/home/$_user/Modules/vdev"
 
 #Make vdev
 make -C vdevd
+
+#Install it
+make -C vdevd install
 
 #Generate initramfs
 make initramfs

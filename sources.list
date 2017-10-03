@@ -1,0 +1,11 @@
+## package repositories
+deb http://auto.mirror.devuan.org/merged ascii main non-free contrib
+deb http://auto.mirror.devuan.org/merged ascii-updates main non-free contrib
+deb http://auto.mirror.devuan.org/merged ascii-security main non-free contrib
+deb http://auto.mirror.devuan.org/merged ascii-backports main non-free contrib
+
+## source repositories
+#deb-src http://auto.mirror.devuan.org/merged ascii main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged ascii-updates main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged ascii-security main non-free contrib
+#deb-src http://auto.mirror.devuan.org/merged ascii-backports main non-free contrib

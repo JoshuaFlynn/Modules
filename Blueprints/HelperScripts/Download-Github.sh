@@ -60,8 +60,28 @@ curl -L "$GITHUB_ZIP_SOURCE/archive/master.zip" > "$TARGET_DIR/Temp_Github.zip"
 #Extract it to destination
 unzip "$TARGET_DIR/Temp_Github.zip" -d "$TARGET_DIR"
 
-#Rename the folder (to get rid of the '-master' part)
-mv "$TARGET_DIR/$REPO_NAME-master" "$TARGET_DIR/$REPO_NAME"
+#Check if the directory already exists
+if [ ! -d "$TARGET_DIR/$REPO_NAME" ]; then
+
+    if [ ! -L "$TARGET_DIR/$REPO_NAME" ]; then
+        #If it doesn't, simply rename the folder (to get rid of the '-master' part), which saves on expensive copying
+        mv "$TARGET_DIR/$REPO_NAME-master" "$TARGET_DIR/$REPO_NAME"
+    else
+    
+        echo "$TARGET_DIR/$REPO_NAME is unexpectedly a symlink. Quitting."
+        exit 2;
+    
+    fi
+
+else
+
+    #Target already exists, use our pre-existing Recursive-Copy.sh script to merge the directories
+    bash "/home/$_user/Modules/Blueprints/HelperScripts/Recursive-Copy.sh" "$TARGET_DIR/$REPO_NAME-master" "$TARGET_DIR/$REPO_NAME"
+
+    #Then remove the old repository
+    rm -rf "$TARGET_DIR/$REPO_NAME-master"
+
+fi
 
 #Give the regular user permissions to delete the folder and files (-R is recursive)
 chown -R "$_user" "$TARGET_DIR/$REPO_NAME"

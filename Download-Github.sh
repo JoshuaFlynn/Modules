@@ -10,7 +10,7 @@ bash ./Download-Github.sh https://github.com/JoshuaFlynn/Modules "/home/$_user/"
 
 exit 0;
 
-elseif (( $# != 3 )); 
+elif (( $# != 3 )); 
 then
 
 echo "Download-Github.sh takes three arguments which are:"

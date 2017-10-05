@@ -24,7 +24,7 @@ fi
 _user=$(logname)
 
 #Download the modules configuration system
-bash "/home/$_user/Modules/HelperScripts/Download-Github.sh" https://github.com/JoshuaFlynn/Modules "/home/$_user/" Modules
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/JoshuaFlynn/Modules "/home/$_user/" Modules
 
 #Delete the garbage files off the desktop
 rm "/home/$_user/Desktop/_RELEASE_NOTES"

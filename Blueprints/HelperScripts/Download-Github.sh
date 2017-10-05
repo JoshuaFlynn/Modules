@@ -1,12 +1,20 @@
 #!/bin/bash
 #Version 1.0
 
+#Get this script's absolute directory
+pushd $( dirname "$0"  ) > /dev/null
+SCRIPT_DIR=$( pwd -P )
+popd > /dev/null
+
+#Get this script's script name minus the directory
+SCRIPT_NAME=$( basename "$0" )
+
 _user=$(logname)
 
 #If no arguments are supplied, it's presumed the JoshuaFlynn Modules github itself is required for self-deployment
 if (( $# == 0 )); then
 
-bash ./Download-Github.sh https://github.com/JoshuaFlynn/Modules "/home/$_user" Modules
+bash "$SCRIPT_DIR/$SCRIPT_NAME" https://github.com/JoshuaFlynn/Modules "/home/$_user" Modules
 
 exit 0;
 

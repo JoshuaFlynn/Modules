@@ -5,31 +5,18 @@
 uid=$(id -u)
 
 #We don't have root permissions, so we can't install or upgrade anything, so we quit
-[ $uid -ne 0 ] && { echo "Only root may run this Blueprint installation package."; exit 1; }
+[ $uid -ne 0 ] && { echo "Only root may run this Module installation package."; exit 1; }
+
+_user=$(logname)
 
 #run our first update
 apt-get update
 
-#Check for github so we can pull down the blueprint package files
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
-
-#It's not there, install and enable it
-if [ "" == "$PKG_OK" ]; then
- 	apt-get --force-yes --yes install git
-fi
-
-#vdev's make requires gcc
-apt-get install -y gcc
-
+#gcc is required to make
+#Make required to, err, make the packages
+#fstik requires pthread (pthread packages), fuse.h (found in the libfuse-dev library)
 #libfskit requires the xattr heads, which are found under libattr1-dev
-apt-get install -y libattr1-dev
-
-#fstik requires pthread
-apt-get install -y libevent-pthreads-2.0-5
-apt-get install -y libpthread-stubs0-dev
-apt-get install -y libpthread-workqueue0
-
-_user=$(logname)
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Bash-Install.sh" gcc make libfuse-dev libattr1-dev libevent-pthreads-2.0-5 libevent-pthreads-2.0-5 libpthread-stubs0-dev libpthread-workqueue0
 
 #Download the pstat library (used by vdev)
 bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/jcnelson/libpstat "/home/$_user/Modules" libpstat
@@ -39,14 +26,6 @@ bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://
 
 #Download vdev (woo hoo)
 bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/jcnelson/vdev "/home/$_user/Modules" vdev
-
-#Check make is installed so we can build the above packages
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' make|grep "install ok installed")
-
-#It's not there, install and enable it
-if [ "" == "$PKG_OK" ]; then
- 	apt-get --force-yes --yes install make
-fi
 
 #============
 # Make libfskit

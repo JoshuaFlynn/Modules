@@ -15,6 +15,7 @@ You pick the most appropriate 'deployment' script for your specific machine's OS
 
 Environmental requirements:
 ---------------------------
+Each Blueprint or Module has a different expected base operating system requirement.
 
 King-Pigeon.sh [in-progress]
 --------------

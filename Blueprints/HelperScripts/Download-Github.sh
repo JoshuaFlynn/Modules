@@ -6,7 +6,7 @@ _user=$(logname)
 #If no arguments are supplied, it's presumed the JoshuaFlynn Modules github itself is required for self-deployment
 if (( $# == 0 )); then
 
-bash ./Download-Github.sh https://github.com/JoshuaFlynn/Modules "/home/$_user/" Modules
+bash ./Download-Github.sh https://github.com/JoshuaFlynn/Modules "/home/$_user" Modules
 
 exit 0;
 

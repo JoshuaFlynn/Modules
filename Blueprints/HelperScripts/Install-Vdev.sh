@@ -32,13 +32,13 @@ apt-get install -y libpthread-workqueue0
 _user=$(logname)
 
 #Download the pstat library (used by vdev)
-bash "/home/$_user/Modules/HelperScripts/Download-Github.sh" https://github.com/jcnelson/libpstat "/home/$_user/Modules" libpstat
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/jcnelson/libpstat "/home/$_user/Modules" libpstat
 
 #Download the fskit (optional dependency used by vdev)
-bash "/home/$_user/Modules/HelperScripts/Download-Github.sh" https://github.com/jcnelson/fskit "/home/$_user/Modules" fskit
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/jcnelson/fskit "/home/$_user/Modules" fskit
 
 #Download vdev (woo hoo)
-bash "/home/$_user/Modules/HelperScripts/Download-Github.sh" https://github.com/jcnelson/vdev "/home/$_user/Modules" vdev
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/jcnelson/vdev "/home/$_user/Modules" vdev
 
 #Check make is installed so we can build the above packages
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' make|grep "install ok installed")

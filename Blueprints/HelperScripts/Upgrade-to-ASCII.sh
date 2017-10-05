@@ -13,7 +13,7 @@ apt-get update
 _user=$(logname)
 
 #Download the modules configuration system
-bash "/home/$_user/Modules/HelperScripts/Download-Github.sh" https://github.com/JoshuaFlynn/Modules "/home/$_user/" Modules
+bash "/home/$_user/Modules/Blueprints/HelperScripts/Download-Github.sh" https://github.com/JoshuaFlynn/Modules "/home/$_user/" Modules
 
 #Make a backup copy of the sources list file
 cp /etc/apt/sources.list /etc/apt/jessie-sources.list.bak

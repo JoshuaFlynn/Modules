@@ -65,32 +65,26 @@ make install PREFIX=/ INCLUDE_PREFIX=/usr
 #Move into the vdev directory so we can make it
 cd "/home/$_user/Modules/vdev"
 
-#Make vdev
-make -C vdevd OS="LINUX"
+#Commands sourced from the Arch.git package build
 
-#Install it
-make -C vdevd install
+#Make all of the required kit
+make PREFIX=/usr -C vdevd OS="LINUX"
+make PREFIX=/usr -C hwdb
+make PREFIX=/usr -C fs
+make PREFIX=/usr -C libudev-compat
 
-#Make vdevd's hardware database
-make -C hwdb
+#Install it all
+make -C vdevd PREFIX='/usr' ETCDIR='/etc' BINDIR='/usr/bin' SBINDIR='/usr/bin' install
+make -C example PREFIX='/usr' ETCDIR='/etc' RUNDIR='/run' LOGDIR='/var/log' 	install
+make PREFIX=/usr -C hwdb install
+make -C fs PREFIX='/usr' SBINDIR='/usr/bin' install
+make -C libudev-compat PREFIX=/usr install
 
-#Install it
-make -C hwdb install
+#Backup copy the libudev.so files
+cp /lib/libudev.so.1 /lib/libudev.so.1.bak
+cp /lib/libudev.so.1.5.2 /lib/libudev.so.1.5.2.bak
 
-#Make vdev udev compatibility
-make -C libudev-compat
+#Copy over the updated ones
+cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1" /lib/libudev.so.1
+cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1.5.2" /lib/libudev.so.1.5.2
 
-#Install vdev udev compatibility
-make -C libudev-compat install DESTDIR= PREFIX= INCLUDE_PREFIX=/usr
-
-#Make vdevfs
-make -C fs
-
-#Install vdevfs
-make -C fs install
-
-#Generate initramfs
-make initramfs
-
-#Update to vdev
-make install-initscript

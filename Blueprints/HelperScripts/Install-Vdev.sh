@@ -65,6 +65,10 @@ make install PREFIX=/ INCLUDE_PREFIX=/usr
 #Move into the vdev directory so we can make it
 cd "/home/$_user/Modules/vdev"
 
+#Backup copy the libudev.so files
+cp /lib/libudev.so.1 /lib/libudev.so.1.bak
+cp /lib/libudev.so.1.5.2 /lib/libudev.so.1.5.2.bak
+
 #Commands sourced from the Arch.git package build
 
 #Make all of the required kit
@@ -73,6 +77,10 @@ make PREFIX=/usr -C hwdb
 make PREFIX=/usr -C fs
 make PREFIX=/usr -C libudev-compat
 
+#==========
+# Install vdev
+#==========
+
 #Install it all
 make -C vdevd PREFIX='/usr' ETCDIR='/etc' BINDIR='/usr/bin' SBINDIR='/usr/bin' install
 make -C example PREFIX='/usr' ETCDIR='/etc' RUNDIR='/run' LOGDIR='/var/log' 	install
@@ -80,11 +88,24 @@ make PREFIX=/usr -C hwdb install
 make -C fs PREFIX='/usr' SBINDIR='/usr/bin' install
 make -C libudev-compat PREFIX=/usr install
 
-#Backup copy the libudev.so files
-cp /lib/libudev.so.1 /lib/libudev.so.1.bak
-cp /lib/libudev.so.1.5.2 /lib/libudev.so.1.5.2.bak
-
 #Copy over the updated ones
-cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1" /lib/libudev.so.1
-cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1.5.2" /lib/libudev.so.1.5.2
+#cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1" /lib/libudev.so.1
+#cp "/home/$_user/Modules/vdev/build/lib/libudev.so.1.5.2" /lib/libudev.so.1.5.2
 
+#Check vdev actually exists before trying to kill udev
+if [ -f "/etc/init.d/vdev" ]; then
+
+    #Create a symlink to the service in bootup
+    cp -sf /etc/init.d/vdev /etc/rcS.d/S03vdev
+
+    #And kill udev
+    rm /etc/rcS.d/S03udev
+    
+else
+
+    echo "vdev not found in /etc/init.d/vdev"
+    exit 2;
+
+fi
+
+exit 0;

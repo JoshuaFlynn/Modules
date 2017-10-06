@@ -19,7 +19,7 @@ ON_BLACK='\033[40m'
 while IFS='' read -r line || [[ -n "$line" ]]; do
     
      #ANALYSE. PACKAGE.
-     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $line|grep "install ok installed")
+     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $line|grep "install ok installed") 2> /dev/null
     
     
      if [ "" == "$PKG_OK" ]; then
